@@ -1,0 +1,201 @@
+/*
+Theme Name:     Kleo Child
+Theme URI:
+Description:    Child theme for Kleo
+Author:         SeventhQueen
+Author URI:     http://seventhqueen.com
+Template:       kleo
+Tags:  one-column, two-columns, right-sidebar, fluid-layout, custom-menu, featured-images, post-formats, sticky-post, translation-ready
+License: GNU General Public License
+License URI: license.txt
+*/
+
+/*
+* Please add your custom styles below
+*/
+.carousel-info .pull-left{
+	max-width: 140px !important
+}
+ Content 
+.content {
+    padding-top: 30px;
+}
+
+div.offset{
+    float: right;
+}
+
+div.offset, div.offset2 {
+    margin: 10px;
+    border: 1px solid #f5f5f5;
+    padding: 10px;
+}
+
+
+
+/* Testimonials */
+.testimonials blockquote {
+    background: #f8f8f8 none repeat scroll 0 0;
+    border: medium none;
+    color: #666;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 15px;
+    position: relative;
+}
+.testimonials blockquote::before {
+    width: 0;
+    height: 0;
+    right: 0;
+    bottom: 0;
+    content: " ";
+    display: block;
+    position: absolute;
+    border-bottom: 20px solid #fff;
+    border-right: 0 solid transparent;
+    border-left: 15px solid transparent;
+    border-left-style: inset; /*FF fixes*/
+    border-bottom-style: inset; /*FF fixes*/
+}
+.testimonials blockquote::after {
+    width: 0;
+    height: 0;
+    right: 0;
+    bottom: 0;
+    content: " ";
+    display: block;
+    position: absolute;
+    border-style: solid;
+    border-width: 20px 20px 0 0;
+    border-color: #e63f0c transparent transparent transparent;
+}
+
+.testimonials-rate{
+    font-weight: bold;
+    color: #e63f0c;
+}
+
+.testimonials .carousel-info img {
+    border: 1px solid #f5f5f5;
+    border-radius: 150px !important;
+    height: 75px;
+    padding: 3px;
+    width: 75px;
+}
+.testimonials .carousel-info {
+    overflow: hidden;
+}
+.testimonials .carousel-info img {
+    margin-right: 15px;
+}
+.testimonials .carousel-info span {
+    display: block;
+}
+.testimonials span.testimonials-name {
+    color: #e6400c;
+    font-size: 16px;
+    font-weight: 300;
+}
+.testimonials span.testimonials-post {
+    color: #656565;
+    font-size: 12px;
+}
+
+/*STAR RATING*/
+.star-ratings {
+    unicode-bidi: bidi-override;
+    color: #c5c5c5;
+    width: 250px;
+    position: relative;
+    padding: 0;
+}
+.star-ratings .star-ratings-top {
+    color: #ffd700;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    left: 0px;
+    overflow: hidden;
+}
+
+.star-ratings .star-ratings-top span, .star-ratings .star-ratings-bottom span{
+    display: inline;
+}
+.star-ratings .star-ratings-bottom {
+    z-index: 0;
+}
+
+/*Progress bar Widget/Shortcode CSS*/
+	.progress {
+    height: 18px;
+	line-height: 18px;
+}
+.progress .skill {
+  font: normal 14px;
+  line-height: 18px;
+  padding: 0;
+  margin: 0 0 0 20px;
+  text-transform: uppercase;
+}
+.progress .skill .val {
+  float: right;
+  font-style: bold;
+  margin: 0 20px 0 0;
+}
+
+.progress-bar {
+  text-align: left;
+  transition-duration: 5s;
+}
+
+.widget-rev-bars{
+	max-width: 100%;
+}
+
+.progress-1 {
+    background-color: #4B253A !important;
+}
+
+.progress-2 {
+    background-color: #EFB917 !important;
+}
+
+.progress-3 {
+    background-color: #45AEEA !important;
+}
+
+.progress-4 {
+    background-color: #D2D558 !important;
+}
+
+.progress-5 {
+    background-color: #D43A43 !important;
+}
+
+.progress-striped .progress-bar,
+.progress-bar-striped {
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+  -webkit-background-size: 40px 40px;
+          background-size: 40px 40px;
+}
+.progress.active .progress-bar,
+.progress-bar.active {
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+       -o-animation: progress-bar-stripes 2s linear infinite;
+          animation: progress-bar-stripes 2s linear infinite;
+}
+
+@media (max-width:767px) {
+	.circles-text{
+		position: initial !important;
+		font-size:18px!important;
+	}
+	.wrap_circle{
+		text-align: left!important;
+		width: auto!important;
+	}
+}

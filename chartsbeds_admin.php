@@ -35,8 +35,9 @@ if($_POST['charts_hidden'] == 'Y') {
         <?php    echo "<h4>" . __( 'Chartsbeds API KEY', 'charts_updates' ) . "</h4>"; ?>
 		
         <p><?php _e("Insert API KEY: " ); ?>
-		<input type="text" name="charts_key" value="<?php echo $apiKey; ?>" size="110"><?php _e(" to recieve KEY, please contact Chartbeds support" ); ?>
-		</p>
+		<input type="text" name="charts_key" value="<?php echo $apiKey; ?>" size="110">
+            <label for="male"><?php _e(" to recieve KEY, please contact Chartsbeds support" ); ?></label>
+        </p>
                 
 		<div>
 			<input type="checkbox" id="gravataroff" name="gravataroff" value="checking" <?php echo get_option("gravataroff"); ?>>

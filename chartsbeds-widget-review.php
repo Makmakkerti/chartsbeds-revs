@@ -19,55 +19,44 @@ function cbreview_widget_shortcode($atts) {
         //Description of recieved data:( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
     }
 
-    add_action('admin_menu', 'charts_admin_actions');?>
+    add_action('admin_menu', 'charts_admin_actions');
 
-    <!--Start comments Widget -->
+    //Start comments Widget
+    echo '<div class="panel panel-default">';
+        echo '<div class="panel-body">';
+            echo '<ul class="media-list">';
 
-    <!-- Fluid width widget -->
-    <div class="panel panel-default">
-        <!--div class="panel-heading cwheader">
-            <h3 class="panel-title">
-                <span class="fa fa-comments-o"></span> 
-                Recent reviews
-            </h3>
-        </div-->
-        <div class="panel-body">
-            <ul class="media-list">
-                <?php $json = file_get_contents('http://dashboard.chartspms.com/REVIEWS.json.php?apiKey='.get_option("charts_key").'&limit='.esc_attr($cba['limit']).'');
-                $obj = json_decode($json, true);
+                 $json = file_get_contents('http://dashboard.chartspms.com/REVIEWS.json.php?apiKey='.get_option("charts_key").'&limit='.esc_attr($cba['limit']).'');
+                 $obj = json_decode($json, true);
 
                 foreach ($obj as $title => $data){
                     $counter = 1;
                     foreach($data as $q=>$res) {
-                        if(is_array($res)){?>
-                            <li class="media">
-                                <div class="media-left">
-                                    <img src="<?php echo $res['gravatar'];?>" class="img-circle" width="60px">
-                                </div>
-                                <div class="media-body">
-                                    <span class="revdate"><?php echo $res['timestamp'];?></span>
-                                    <h4 class="media-heading">
-                                        <small><b><?php echo ucfirst($res['name']);?></b> <br />from <?php echo $res['country'];?></small><br><small><span class="fa fa-thumbs-up" style="color:#337ab7"></span> <?php echo $res['guest_rating'];?>% Satisfied <br>
-                                        </small>
-                                    </h4>
-                                    <p class="charts-widg-p">
-                                        <?php echo $res['review'];?>
-                                    </p>
-                                    <p class="charts-widg" ><small><span class="fa fa-heart" style="color:red"></span> <?php echo ucfirst($res['name']);?> recommends this hotel</small></p>
-                                </div>
-                            </li>
+                        if(is_array($res)){
+                            echo '<li class="media">';
+                                echo '<div class="media-left"><img src="'.$res['gravatar'].'" class="img-circle" width="60px"></div>';
+                                echo '<div class="media-body">';
+                                    echo '<span class="revdate">'.$res['timestamp'].'</span>';
+                                    echo '<h4 class="media-heading">';
+                                    echo '<small><b>'.ucfirst($res['name']).'</b> <br />from '.$res['country'].'</small><br><small><span class="fa fa-thumbs-up" style="color:#337ab7"></span>';
+                                    echo $res['guest_rating'].'% Satisfied <br></small>';
+                                    echo '</h4>';
+                                    echo '<p class="charts-widg-p">';
+                                    echo $res['review'];
+                                    echo '</p>';
+                                    echo '<p class="charts-widg" ><small><span class="fa fa-heart" style="color:red"></span>';
+                                    echo ucfirst($res['name']);
+                                    echo ' recommends this hotel</small></p>';
+                                echo '</div></li><hr>';
+                        }
+                    }
+                }
 
-                            <hr>
-                        <?php }}}?>
-                <a href="#" class="btn btn-primary">Go to reviews page»</a>
-            </ul>
-        </div>
-    </div>
-    <!-- End fluid width widget -->
+                echo '<a href="#" class="btn btn-primary">Go to reviews page»</a>';
+                echo '</ul></div></div>';
 
-
-    <!--End comments Widget -->
-<?php }
+   //End comments Widget
+}
 
 add_shortcode('chartsbeds-review-recent', 'cbreview_widget_shortcode');
 
@@ -127,15 +116,14 @@ class CBreviews_Widget extends WP_Widget {
 
         //Set up some default widget settings.
         $defaults = array( 'title' => __('Hotel name', 'reviews'), 'name' => __('ChartsBeds', 'reviews'), 'show_info' => true );
-        $instance = wp_parse_args( (array) $instance, $defaults ); ?>
+        $instance = wp_parse_args( (array) $instance, $defaults );
 
-        <!-- Widget Title: Text Input.-->
-        <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'reviews'); ?></label>
-            <input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
-        </p>
-
-
-        <?php
+        //Widget Title: Text Input.
+        echo '<p>';
+        echo '<label for="'.$this->get_field_id( 'title' ).'">';
+        _e('Title:', 'reviews');
+        echo '</label>';
+        echo '<input id="'.$this->get_field_id( 'title' ).'" name="'.$this->get_field_name( 'title' ).'" value="'.$instance['title'].'" style="width:100%;" />';
+        echo '</p>';
     }
 }

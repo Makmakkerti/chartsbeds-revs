@@ -17,68 +17,35 @@ function rev_creation(){
         "staff" => $staf,
         "rooms" => $room,
         "fun" => $fun,
-    );?>
-
-    <script src="/wp-content/plugins/chartsbeds-review/scripts/circles.js"></script>
-    <style>
-        <?php $countsV = 1; foreach($arrPercent as $key=>$vals){?>
-        #circles-<?php echo $countsV;?>:after{
-            content: " <?php echo $key;?>";
-            font-size: 16px;
-            position: relative;
-            display: block;
-        }
-        <?php $countsV++; }?>
-    </style>
-
-    <div id="canvas">
-        <div class="wrap_circle"><div class="circle" id="circles-1">cleanliness</div></div>
-        <div class="wrap_circle"><div class="circle" id="circles-2">location</div></div>
-        <div class="wrap_circle"><div class="circle" id="circles-3">staff</div></div>
-        <div class="wrap_circle"><div class="circle" id="circles-4">rooms</div></div>
-        <div class="wrap_circle"><div class="circle" id="circles-5">fun</div></div>
-    </div>
+    );
 
 
-    <script>
-        var colors = [
-                ['#D3B6C6', '#4B253A'], ['#FCE6A4', '#EFB917'], ['#BEE3F7', '#45AEEA'], ['#F8F9B6', '#D2D558'], ['#F4BCBF', '#D43A43']
-            ],
-            circles = [];
-        <?php
+    echo '<div class="chartsbeds-circle">';
+        echo '<div id="canvas">';
+            echo '<div class="wrap_circle"><div class="circle" id="circles-1">cleanliness</div></div>';
+            echo '<div class="wrap_circle"><div class="circle" id="circles-2">location</div></div>';
+            echo '<div class="wrap_circle"><div class="circle" id="circles-3">staff</div></div>';
+            echo '<div class="wrap_circle"><div class="circle" id="circles-4">rooms</div></div>';
+            echo '<div class="wrap_circle"><div class="circle" id="circles-5">fun</div></div>';
+        echo '</div>';
+    echo '</div>';
+
+    echo '<script type="application/javascript">';
+        echo "var colors = [['#D3B6C6', '#4B253A'], ['#FCE6A4', '#EFB917'], ['#BEE3F7', '#45AEEA'], ['#F8F9B6', '#D2D558'], ['#F4BCBF', '#D43A43']], circles = []; \n";
 
         $i = 1;
-        foreach($arrPercent as $k=>$v){?>
+        foreach($arrPercent as $k=>$v){
+            $c_value = $v*20;
+        echo "var child = document.getElementById('circles-".$i."'), percentage = '".$c_value."',";
+                $h_color = $i-1;
+            echo "circle = Circles.create({ id:child.id,  value:percentage, radius:getWidth(), width:10, colors:colors['".$h_color."'],  duration:900,}); \n";
 
-        var child = document.getElementById('circles-<?php echo $i;?>'),
-            percentage = <?php echo $v*20;?>,
+        $i++; }
 
-            circle = Circles.create({
-                id:         child.id,
-                value:      percentage,
-                radius:     getWidth(),
-                width:      10,
-                colors:     colors[<?php echo $i?> - 1],
-                duration:            900,
-            });
-
-        <?php $i++; }?>
-        circles.push(circle);
-
-
-        window.onresize = function(e) {
-            for (var i = 0; i < circles.length; i++) {
-                circles[i].updateRadius(getWidth());
-            }
-        };
-
-        function getWidth() {
-            return window.innerWidth /25;
-        }
-
-    </script>
-
-
-<?php }
+    echo "circles.push(circle); \n";
+    echo "window.onresize = function(e) {for (var i = 0; i < circles.length; i++) {circles[i].updateRadius(getWidth());}}; \n";
+    echo "function getWidth() {return window.innerWidth /25;} \n";
+    echo '</script>';
+}
 
 add_shortcode('chartsbeds-review-circle', 'rev_creation');

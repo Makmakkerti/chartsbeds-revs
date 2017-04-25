@@ -17,74 +17,33 @@ function widget_bar_creation(){
         "staff" => $staf,
         "rooms" => $room,
         "fun" => $fun,
-    );?>
+    );
 
+        echo '<script>';
+        echo 'jQuery(document).ready(function() {';
+        echo 'jQuery(\'.progress .progress-bar\').css("width",function() {return jQuery(this).attr("aria-valuenow") + "%";});';
+        echo 'jQuery(".charts-widg-p").shorten({ "showChars" : 100, "moreText": " See More", "lessText": " Less",});';
+        echo 'jQuery(".cb-rev-clients").shorten({"showChars" : 100, "moreText"	: " See More", "lessText"	: " Less",});';
+        echo 'jQuery(".morecontent a").addClass("btn btn-default btn-xs");';
+        echo 'jQuery(".morelink").click(function(){if (jQuery(this).closest( ".rcustomers" ).hasClass( "col-md-10" )){jQuery(this).closest( ".rcustomers" ).removeClass( "col-md-10" )}';
+        echo 'else{jQuery(this).closest( ".rcustomers" ).addClass( "col-md-10" )};});});';
+        echo '</script>';
 
-    <html>
-    <head>
-       <script type="text/javascript" src="https://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
-
-        <script>
-            jQuery(document).ready(function() {
-
-                jQuery('.progress .progress-bar').css("width",
-                    function() {
-                        return jQuery(this).attr("aria-valuenow") + "%";
-                    }
-                );
-
-                jQuery(".charts-widg-p").shorten({
-                    "showChars" : 100,
-                    "moreText"	: " See More",
-                    "lessText"	: " Less",}
-                );
-
-                jQuery(".cb-rev-clients").shorten({
-                        "showChars" : 100,
-                        "moreText"	: " See More",
-                        "lessText"	: " Less",
-                    }
-                );
-                jQuery(".morecontent a").addClass("btn btn-default btn-xs");
-
-                jQuery(".morelink").click(function(){
-                    if (jQuery(this).closest( '.rcustomers' ).hasClass( "col-md-10" )){jQuery(this).closest( '.rcustomers' ).removeClass( 'col-md-10' )}else{jQuery(this).closest( '.rcustomers' ).addClass( 'col-md-10' )};
-                });
-            });
-        </script>
-
-
-    </head>
-
-    <body>
-
-    <!-- Skill Bars -->
-    <?php
 
     $pl = 1;
-    foreach($arrPercent as $k=>$v){	?>
+    foreach($arrPercent as $k=>$v){
+        $the_value = $v*20;
+        echo '<div class="progress skill-bar ">';
+        echo '<div class="progress-bar progress-'.$pl.' progress-bar-striped active" role="progressbar" aria-valuenow="'.$the_value.'" aria-valuemin="0" aria-valuemax="100">';
+        echo '<span class="skill"><?php echo $k;?><i class="val">'.$the_value.'</i></span>';
+        echo '</div></div>';
+        $pl++; }
+    }
 
-        <div class="progress skill-bar ">
-            <div class="progress-bar progress-<?php echo $pl;?> progress-bar-striped active" role="progressbar" aria-valuenow="<?php echo $v*20;?>" aria-valuemin="0" aria-valuemax="100">
-                <span class="skill"><?php echo $k;?><i class="val"><?php echo $v*20;?></i></span>
-            </div>
-        </div>
-        <?php $pl++; }?>
-
-    <!--/div>
-</div-->
-    </body>
-    </html>
-
-<?php }?>
-
-<?php add_shortcode('chartsbeds-review-bar', 'widget_bar_creation');
-
+add_shortcode('chartsbeds-review-bar', 'widget_bar_creation');
 /***FINISHING TO ADD PLUGIN**/
 
-
 /***ADDING WIDGET TO ADMINPANEL**/
-
 add_action( 'widgets_init', 'cbbar_widget' );
 
 function cbbar_widget() {
@@ -123,7 +82,6 @@ class CBbar_Widget extends WP_Widget {
     }
 
     //Update the widget
-
     function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
 
@@ -133,21 +91,18 @@ class CBbar_Widget extends WP_Widget {
 
         return $instance;
     }
-
-
     function form( $instance ) {
 
         //Set up some default widget settings.
         $defaults = array( 'title' => __('Hotel name', 'wreviews'), 'name' => __('ChartsBeds', 'wreviews'), 'show_info' => true );
-        $instance = wp_parse_args( (array) $instance, $defaults ); ?>
+        $instance = wp_parse_args( (array) $instance, $defaults );
 
-        <!-- Widget Title: Text Input.-->
-        <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'wreviews'); ?></label>
-            <input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
-        </p>
-
-
-        <?php
+        /* Widget Title: Text Input.*/
+        echo "<p>";
+        echo '<label for="'.$this->get_field_id( 'title' ).'">';
+        _e('Title:', 'wreviews');
+        echo '</label>';
+        echo '<input id="'.$this->get_field_id( 'title' ).'" name="'.$this->get_field_name( 'title' ).'" value="'.$instance['title'].'" style="width:100%;" />';
+        echo '</p>';
     }
 }

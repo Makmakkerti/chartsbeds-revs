@@ -18,42 +18,31 @@ if($_POST['charts_hidden'] == 'Y') {
              }
              update_option('answersoff', $gravoff);
 		 
-		 ?>
-		 
-		<div class="updated"><p><strong><?php _e('Options saved.' ); ?></strong></p></div>
-<?php
+             echo '<div class="updated"><p><strong>';
+             _e('Options saved.' );
+             echo '</strong></p></div>';
+
 }else{
 	$apiKey = get_option('charts_key');
 }
-?>
-
-<div class="wrap">
-    <?php    echo "<h2>" . __( 'ChartsBeds Options', 'charts_updates' ) . "</h2>"; ?>
-     
-    <form name="charts_form" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
-        <input type="hidden" name="charts_hidden" value="Y">
-        <?php    echo "<h4>" . __( 'Chartsbeds API KEY', 'charts_updates' ) . "</h4>"; ?>
-		
-        <p><?php _e("Insert API KEY: " ); ?>
-		<input type="text" name="charts_key" value="<?php echo $apiKey; ?>" size="110">
-            <label for="male"><?php _e(" to recieve KEY, please contact Chartsbeds support" ); ?></label>
-        </p>
-                
-		<div>
-			<input type="checkbox" id="gravataroff" name="gravataroff" value="checking" <?php echo get_option("gravataroff"); ?>>
-			<label for="gravataroff">Check to disable gravatars for reviews widget</label>
-		</div>
-		
-		<div>
-			<input type="checkbox" id="answersoff" name="answersoff" value="answersoff" <?php echo get_option("answersoff"); ?>>
-			<label for="answersoff">Check to disable hotel's answer for reviews</label>
-		</div>
-		
-        <p class="submit">
-        <input type="submit" name="Save" value="<?php _e('Update Options', 'charts_updates' ) ?>" />
-        </p>
-    </form>
-</div>
 
 
-
+echo '<div class="wrap">';
+echo "<h2>" . __( 'ChartsBeds Options', 'charts_updates' ) . "</h2>";
+echo '<form name="charts_form" method="post" action="'.str_replace( '%7E', '~', $_SERVER['REQUEST_URI']).'">';
+echo '<input type="hidden" name="charts_hidden" value="Y">';
+echo "<h4>" . __( 'Chartsbeds API KEY', 'charts_updates' ) . "</h4>";
+echo '<p>';
+_e("Insert API KEY: " );
+echo '<input type="text" name="charts_key" value="'.$apiKey.'" size="110">';
+echo '<label for="male">';
+_e(" to recieve KEY, please contact Chartsbeds support" );
+echo '</label></p>';
+echo '<div>';
+echo '<input type="checkbox" id="gravataroff" name="gravataroff" value="checking" '.get_option("gravataroff").'>';
+echo '<label for="gravataroff">Check to disable gravatars for reviews widget</label></div>';
+echo '<div><input type="checkbox" id="answersoff" name="answersoff" value="answersoff" '.get_option("answersoff").'';
+echo '<label for="answersoff">Check to disable hotel\'s answer for reviews</label></div>';
+echo '<p class="submit"><input type="submit" name="Save" value="';
+_e('Update Options', 'charts_updates' );
+echo '" /></p></form></div>';

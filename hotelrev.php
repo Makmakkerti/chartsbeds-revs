@@ -25,18 +25,14 @@
     /*ADDING SCRIPTS*/
     wp_enqueue_script('circles', plugin_dir_url(__FILE__) . 'scripts/circles.js', array('jquery'));
     wp_enqueue_script('shorten', plugin_dir_url(__FILE__) . 'scripts/shorten.js', array('jquery'));
-    wp_enqueue_script('main', plugin_dir_url(__FILE__) . 'scripts/chartsbeds-review.js', array('JQuery'));
 
-    /**/
     $pluginPath = plugin_dir_path(__FILE__);
-    include ( $pluginPath . 'chartsbeds-plugin-page.php' );
+
     include ( $pluginPath . 'chartsbeds-widget-review.php' );
     include ( $pluginPath . 'chartsbeds-widget-bar.php' );
+
+    include ( $pluginPath . 'chartsbeds-plugin-page.php' );
     include ( $pluginPath . 'chartsbeds-plugin-circle.php' );
 
-
-
-
-
-
-
+    include ( $pluginPath . 'admin_widget_bar.php' );
+    include ( $pluginPath . 'admin_widget_review.php' );

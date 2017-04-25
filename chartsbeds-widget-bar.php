@@ -22,29 +22,7 @@ function widget_bar_creation(){
 
     <html>
     <head>
-        <style>
-            .progress-1 {
-                background-color: #4B253A;
-            }
-
-            .progress-2 {
-                background-color: #EFB917;
-            }
-
-            .progress-3 {
-                background-color: #45AEEA;
-            }
-
-            .progress-4 {
-                background-color: #D2D558;
-            }
-
-            .progress-5 {
-                background-color: #D43A43;
-            }
-        </style>
-        <link rel='stylesheet' href='/wp-content/plugins/chartsbeds-review/styles/style.css' type='text/css' media='all' />
-        <script type="text/javascript" src="https://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+       <script type="text/javascript" src="https://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
 
         <script>
             jQuery(document).ready(function() {
@@ -62,7 +40,7 @@ function widget_bar_creation(){
                 );
 
                 jQuery(".cb-rev-clients").shorten({
-                        "showChars" : 240,
+                        "showChars" : 100,
                         "moreText"	: " See More",
                         "lessText"	: " Less",
                     }
@@ -72,11 +50,7 @@ function widget_bar_creation(){
                 jQuery(".morelink").click(function(){
                     if (jQuery(this).closest( '.rcustomers' ).hasClass( "col-md-10" )){jQuery(this).closest( '.rcustomers' ).removeClass( 'col-md-10' )}else{jQuery(this).closest( '.rcustomers' ).addClass( 'col-md-10' )};
                 });
-
-
-
             });
-
         </script>
 
 

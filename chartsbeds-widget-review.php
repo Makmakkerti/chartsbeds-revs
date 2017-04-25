@@ -22,44 +22,6 @@ function cbreview_widget_shortcode($atts) {
     add_action('admin_menu', 'charts_admin_actions');?>
 
     <!--Start comments Widget -->
-    <head>
-        <style>
-            .cwheader{
-                background-color: #537cb4 !important;
-            }
-
-            .cwheader h3{
-                color: #fff !important;
-            }
-            .media-heading{
-                line-height: 18px;
-            }
-            .charts-widg{
-                float: right;
-                padding-right: 10px;
-                line-height: 12;
-                margin-top: 5px;
-            }
-            .media-left{
-                float: left;
-                width: 20%;
-                margin-right: 10px;
-            <?php if(!empty(get_option("gravataroff"))) echo "display:none;";?>
-            }
-            .revdate{
-                float: right;
-                font-size: 11px;
-            }
-            .charts-widg-p{
-                margin: 0;
-                line-height: 14px;
-                font-size: 12px;
-                font-family: Arial;
-            }
-        </style>
-    </head>
-
-    <body>
 
     <!-- Fluid width widget -->
     <div class="panel panel-default">
@@ -103,7 +65,7 @@ function cbreview_widget_shortcode($atts) {
     </div>
     <!-- End fluid width widget -->
 
-    </body>
+
     <!--End comments Widget -->
 <?php }
 

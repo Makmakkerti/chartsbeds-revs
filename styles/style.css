@@ -191,6 +191,22 @@ div.offset, div.offset2 {
           animation: progress-bar-stripes 2s linear infinite;
 }
 
+
+.wrap_circle{
+    width: 16%;
+    text-align: center;
+    float: left;
+    margin-left: 1em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#canvas{
+    left: 3%;
+    position: relative;
+}
+
+
 @media (max-width:767px) {
 	.circles-text{
 		position: initial !important;
@@ -201,3 +217,40 @@ div.offset, div.offset2 {
 		width: auto!important;
 	}
 }
+/*Progress bar Widget/Shortcode CSS END*/
+
+/**REVIEW WIDGET*/
+.cwheader{
+    background-color: #537cb4 !important;
+}
+
+.cwheader h3{
+    color: #fff !important;
+}
+.media-heading{
+    line-height: 18px;
+}
+.charts-widg{
+    float: right;
+    padding-right: 10px;
+    line-height: 1em;
+    margin-top: 5px;
+}
+.media-left{
+    float: left;
+    width: 20%;
+    margin-right: 10px;
+   /* <?php if(!empty(get_option("gravataroff"))) echo "display:none;";?>*/
+}
+.revdate{
+    float: right;
+    font-size: 11px;
+}
+.charts-widg-p{
+    margin: 0;
+    line-height: 14px;
+    font-size: 12px;
+    font-family: Arial;
+}
+
+/**REVIEW WIDGET END*/

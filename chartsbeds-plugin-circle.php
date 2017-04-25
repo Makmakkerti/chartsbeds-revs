@@ -19,8 +19,6 @@ function rev_creation(){
         "fun" => $fun,
     );?>
 
-
-    <link rel='stylesheet' href='/wp-content/plugins/chartsbeds-review/styles/style.css' type='text/css' media='all' />
     <script src="/wp-content/plugins/chartsbeds-review/scripts/circles.js"></script>
     <style>
         <?php $countsV = 1; foreach($arrPercent as $key=>$vals){?>
@@ -31,20 +29,6 @@ function rev_creation(){
             display: block;
         }
         <?php $countsV++; }?>
-
-        .wrap_circle{
-            width: 16%;
-            text-align: center;
-            float: left;
-            margin-left: 1em;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        #canvas{
-            left: 3%;
-            position: relative;
-        }
     </style>
 
     <div id="canvas">

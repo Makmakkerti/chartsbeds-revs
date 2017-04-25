@@ -1,6 +1,18 @@
 <?php
 add_action( 'widgets_init', 'cbreviews_widget' );
 
+/*Adding settings page to Admin Panel*/
+function charts_admin() {
+    include('chartsbeds_admin.php');
+}
+
+function charts_admin_actions() {
+    add_menu_page("Chartsbeds", "Chartsbeds", 1, "Chartsbeds", "charts_admin", plugins_url()."/chartsbeds-review/chartsbeds_ico.png", 7);
+    //Description of recieved data:( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
+}
+
+add_action('admin_menu', 'charts_admin_actions');
+
 function cbreviews_widget() {
     register_widget( 'CBreviews_Widget' );
 }

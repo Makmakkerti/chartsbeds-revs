@@ -3,6 +3,9 @@ if($_POST['charts_hidden'] == 'Y') {
         //Form data sent
 		 $apiKey = $_POST['charts_key'];
 		 update_option('charts_key', $apiKey);
+
+         $urlRev = $_POST['rev_url'];
+         update_option('rev_url', $urlRev);
 		 
              if(!empty($_POST['gravataroff'])){
                  $gravoff = "checked";
@@ -24,8 +27,8 @@ if($_POST['charts_hidden'] == 'Y') {
 
 }else{
 	$apiKey = get_option('charts_key');
+    $urlRev = get_option('rev_url');
 }
-
 
 echo '<div class="wrap">';
 echo "<h2>" . __( 'ChartsBeds Options', 'charts_updates' ) . "</h2>";
@@ -34,10 +37,17 @@ echo '<input type="hidden" name="charts_hidden" value="Y">';
 echo "<h4>" . __( 'Chartsbeds API KEY', 'charts_updates' ) . "</h4>";
 echo '<p>';
 _e("Insert API KEY: " );
-echo '<input type="text" name="charts_key" value="'.$apiKey.'" size="110">';
-echo '<label for="male">';
+echo '<input type="text" name="charts_key" id="charts_key" value="'.$apiKey.'" size="110">';
+echo '<label for="charts_key">';
 _e(" to recieve KEY, please contact Chartsbeds support" );
 echo '</label></p>';
+
+echo '<p>';
+_e("Insert Reviews page url (optional):" );
+echo '<input type="text" name="rev_url" id="rev_url" value="'.$urlRev.'" size="110">';
+echo '</p>';
+
+
 echo '<div>';
 echo '<input type="checkbox" id="gravataroff" name="gravataroff" value="checking" '.get_option("gravataroff").'>';
 echo '<label for="gravataroff">Check to disable gravatars for reviews widget</label></div>';

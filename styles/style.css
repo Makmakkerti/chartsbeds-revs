@@ -1,18 +1,4 @@
-/*
-Theme Name:     Kleo Child
-Theme URI:
-Description:    Child theme for Kleo
-Author:         SeventhQueen
-Author URI:     http://seventhqueen.com
-Template:       kleo
-Tags:  one-column, two-columns, right-sidebar, fluid-layout, custom-menu, featured-images, post-formats, sticky-post, translation-ready
-License: GNU General Public License
-License URI: license.txt
-*/
 
-/*
-* Please add your custom styles below
-*/
 .carousel-info .pull-left{
 	max-width: 140px !important
 }
@@ -210,9 +196,9 @@ License URI: license.txt
     display: block;
 }
 
-.chartsbeds-circle{
+/*.chartsbeds-circle{
     min-height: 180px;
-}
+}*/
 
 .wrap_circle{
     width: 16%;
@@ -226,6 +212,7 @@ License URI: license.txt
 #canvas{
     left: 3%;
     position: relative;
+    min-height: 200px;
 }
 
 
@@ -240,18 +227,9 @@ License URI: license.txt
     }
 }
 
-
-
 /*Circles CSS END*/
 
 /**REVIEW WIDGET*/
-.cwheader{
-    background-color: #537cb4 !important;
-}
-
-.cwheader h3{
-    color: #fff !important;
-}
 .media-heading{
     line-height: 18px;
 }

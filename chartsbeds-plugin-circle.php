@@ -1,5 +1,4 @@
 <?php
-
 function rev_creation(){
 
     $json = file_get_contents('http://dashboard.chartspms.com/REVIEWS.json.php?apiKey='.get_option("charts_key").'');
@@ -19,16 +18,15 @@ function rev_creation(){
         "fun" => $fun,
     );
 
-
-    echo '<div class="chartsbeds-circle">';
+   echo "<script type='text/javascript' src='".plugins_url( 'scripts/circles.js', __FILE__ )."'></script>";
         echo '<div id="canvas">';
-            echo '<div class="wrap_circle"><div class="circle" id="circles-1">cleanliness</div></div>';
-            echo '<div class="wrap_circle"><div class="circle" id="circles-2">location</div></div>';
-            echo '<div class="wrap_circle"><div class="circle" id="circles-3">staff</div></div>';
-            echo '<div class="wrap_circle"><div class="circle" id="circles-4">rooms</div></div>';
-            echo '<div class="wrap_circle"><div class="circle" id="circles-5">fun</div></div>';
+            echo '<div class="wrap_circle" style="float:left;"><div class="circle" id="circles-1">cleanliness</div></div>';
+            echo '<div class="wrap_circle" style="float:left;"><div class="circle" id="circles-2">location</div></div>';
+            echo '<div class="wrap_circle" style="float:left;"><div class="circle" id="circles-3">staff</div></div>';
+            echo '<div class="wrap_circle" style="float:left;"><div class="circle" id="circles-4">rooms</div></div>';
+            echo '<div class="wrap_circle" style="float:left;"><div class="circle" id="circles-5">fun</div></div>';
         echo '</div>';
-    echo '</div>';
+
 
     echo '<script type="application/javascript">';
         echo "var colors = [['#D3B6C6', '#4B253A'], ['#FCE6A4', '#EFB917'], ['#BEE3F7', '#45AEEA'], ['#F8F9B6', '#D2D558'], ['#F4BCBF', '#D43A43']], circles = []; \n";
@@ -45,7 +43,7 @@ function rev_creation(){
     echo "circles.push(circle); \n";
     echo "window.onresize = function(e) {for (var i = 0; i < circles.length; i++) {circles[i].updateRadius(getWidth());}}; \n";
     echo "function getWidth() {return window.innerWidth /25;} \n";
-    echo '</script>';
+    echo "</script>";
 }
 
 add_shortcode('chartsbeds-review-circle', 'rev_creation');

@@ -1,5 +1,4 @@
 <?php
-
 function cbreview_widget_shortcode($atts) {
     $cba = shortcode_atts( array(
         'limit' => esc_attr($cba['limit']),
@@ -8,18 +7,6 @@ function cbreview_widget_shortcode($atts) {
     if(empty($cba['limit'])){
         $cba['limit'] = 4;
     }
-
-    /*Adding settings page to Admin Panel*/
-    function charts_admin() {
-        include('chartsbeds_admin.php');
-    }
-
-    function charts_admin_actions() {
-        add_menu_page("Chartsbeds", "Chartsbeds", 1, "Chartsbeds", "charts_admin", plugins_url()."/chartsbeds-review/chartsbeds_ico.png", 7);
-        //Description of recieved data:( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
-    }
-
-    add_action('admin_menu', 'charts_admin_actions');
 
     //Start comments Widget
     echo '<div class="panel panel-default">';
@@ -52,7 +39,7 @@ function cbreview_widget_shortcode($atts) {
                     }
                 }
 
-                echo '<a href="#" class="btn btn-primary">Go to reviews page»</a>';
+                echo '<a href="#" class="btn btn-primary">Go to reviews page</a>';
                 echo '</ul></div></div>';
 
    //End comments Widget

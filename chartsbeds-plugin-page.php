@@ -1,5 +1,4 @@
 <?php
-
 /// Function ADD Reviews to the page
 function review_add_shortcode($cbh) {
     $cbh = shortcode_atts( array(
@@ -8,11 +7,22 @@ function review_add_shortcode($cbh) {
 
     $json = file_get_contents('http://dashboard.chartspms.com/REVIEWS.json.php?apiKey='.get_option("charts_key").'&limit='.esc_attr($cbh['limit']).'');
     $obj = json_decode($json, true);
+    
+    echo '<script>';
+    echo 'jQuery(document).ready(function() {';
+    echo 'jQuery(".charts-widg-p").shorten({ "showChars" : 100, "moreText": " See More", "lessText": " Less",});';
+    echo 'jQuery(".cb-rev-clients").shorten({"showChars" : 100, "moreText"	: " See More", "lessText"	: " Less",});';
+    echo 'jQuery(".morecontent a").addClass("btn btn-default btn-xs");';
+    echo '});';
+	echo 'jQuery(".morelink").click(function(){if (jQuery(this).closest( ".rcustomers" ).hasClass( "col-md-10" )){jQuery(this).closest( ".rcustomers" ).removeClass( "col-md-10" )}else{jQuery(this).closest( ".rcustomers" ).addClass( "col-md-10" )};});';
+    echo '</script>';
+
 
     foreach ($obj as $title => $data){
         $counter = 1;
         foreach($data as $q=>$res) {
             if(is_array($res)){
+			$g_rates = $res['guest_rating']*0.58;
                echo '<div class=\"row tinline\" >';
                echo '<div class="col-md-5  rcustomers">';
                echo '<div class="testimonials">';
@@ -20,7 +30,7 @@ function review_add_shortcode($cbh) {
                echo '<blockquote><p class="cb-rev-clients">'.$res['review'].'</p></blockquote>';
                echo '<div class="testimonials-rate col-md-4">Rating: '.$res['guest_rating'].'';
                echo '<div class="star-ratings">';
-               echo '<div class="star-ratings-top" style="width:'.$res['guest_rating']*0.58.'px"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>';
+               echo '<div class="star-ratings-top" style="width:'.$g_rates.'px"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>';
                echo '<div class="star-ratings-bottom"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div></div></div>';
                echo '<div class="carousel-info">';
                echo '<img alt="" src="'.$res['gravatar'].'" class="pull-left">';

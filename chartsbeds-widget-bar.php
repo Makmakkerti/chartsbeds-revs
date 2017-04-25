@@ -34,7 +34,7 @@ function widget_bar_creation(){
         $the_value = $v*20;
         echo '<div class="progress skill-bar ">';
         echo '<div class="progress-bar progress-'.$pl.' progress-bar-striped active" role="progressbar" aria-valuenow="'.$the_value.'" aria-valuemin="0" aria-valuemax="100">';
-        echo '<span class="skill"><?php echo $k;?><i class="val">'.$the_value.'</i></span>';
+        echo '<span class="skill">'.$k.'<i class="val">'.$the_value.'</i></span>';
         echo '</div></div>';
         $pl++; }
     }

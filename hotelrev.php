@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 * Plugin Name: Chartsbeds
 * Description: Chartsbeds reviews plugin.
@@ -11,28 +11,29 @@
         exit;
     }
 
-
-    /*ADDING STYLES*/
-    wp_enqueue_style( 'chartsbeds-css', plugins_url( 'styles/style.css', __FILE__ ) );
-    wp_register_style( 'chartsbeds-css', plugins_url( 'styles/style.css', __FILE__ ) );
-
-    /*ADDING LAST VERSION OF FONT AWSOME*/
-    add_action('wp_head', 'add_fawesome_mc');
-    function add_fawesome_mc() {
-    wp_enqueue_script( 'font-awesome', 'https://use.fontawesome.com/4ef6ac5e6d.js' );
-    }
-
-    /*ADDING SCRIPTS*/
-    wp_enqueue_script('circles', plugin_dir_url(__FILE__) . 'scripts/circles.js', array('jquery'));
-    wp_enqueue_script('shorten', plugin_dir_url(__FILE__) . 'scripts/shorten.js', array('jquery'));
-
     $pluginPath = plugin_dir_path(__FILE__);
+include ( $pluginPath . 'chartsbeds-widget-bar.php' );
+include ( $pluginPath . 'chartsbeds-plugin-circle.php' );
 
-    include ( $pluginPath . 'chartsbeds-widget-review.php' );
-    include ( $pluginPath . 'chartsbeds-widget-bar.php' );
 
-    include ( $pluginPath . 'chartsbeds-plugin-page.php' );
-    include ( $pluginPath . 'chartsbeds-plugin-circle.php' );
+include ( $pluginPath . 'chartsbeds-plugin-page.php' );
+include ( $pluginPath . 'chartsbeds-widget-review.php' );
 
-    include ( $pluginPath . 'admin_widget_bar.php' );
-    include ( $pluginPath . 'admin_widget_review.php' );
+include ( $pluginPath . 'admin_widget_review.php' );
+include ( $pluginPath . 'admin_widget_bar.php' );
+//
+/*echo "<script type='text/javascript' src='http://testpms/wp-content/plugins/chartsbeds-review/scripts/shorten.js'></script>";
+echo "<script type='text/javascript' src='http://testpms/wp-content/plugins/chartsbeds-review/scripts/circles.js'></script>";
+echo "<link rel='stylesheet'  href='http://testpms/wp-content/plugins/chartsbeds-review/styles/style.css' type='text/css' media='all' />";*/
+
+/*ADDING LAST VERSION OF FONT AWSOME*/
+add_action('wp_head', 'add_fawesome_mc');
+function add_fawesome_mc() {
+
+    wp_enqueue_style( 'rvmain-css', plugins_url( 'styles/style.css', __FILE__ ) );
+    wp_register_style( 'rvmain-css', plugins_url( 'styles/style.css', __FILE__ ) );
+    //wp_enqueue_style( 'cbcss', 'http://testpms/wp-content/plugins/chartsbeds-review/styles/style.css' );
+    wp_enqueue_script( 'font-awesome', 'https://use.fontawesome.com/4ef6ac5e6d.js' );
+    wp_enqueue_script( 'circles', plugins_url( 'scripts/circles.js', __FILE__ ) );
+    wp_enqueue_script( 'shorten', plugins_url( 'scripts/shorten.js', __FILE__ ) );
+}

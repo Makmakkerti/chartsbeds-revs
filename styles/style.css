@@ -212,7 +212,7 @@
 #canvas{
     left: 3%;
     position: relative;
-    min-height: 200px;
+    min-height: 240px;
 }
 
 
@@ -243,7 +243,6 @@
     float: left;
     width: 20%;
     margin-right: 10px;
-   /* <?php if(!empty(get_option("gravataroff"))) echo "display:none;";?>*/
 }
 .revdate{
     float: right;

@@ -23,9 +23,7 @@ function widget_bar_creation(){
         echo 'jQuery(".progress .progress-bar").css("width",function() {return jQuery(this).attr("aria-valuenow") + "%";});';
         echo 'jQuery(".charts-widg-p").shorten({ "showChars" : 100, "moreText": " See More", "lessText": " Less",});';
         echo 'jQuery(".cb-rev-clients").shorten({"showChars" : 100, "moreText"	: " See More", "lessText"	: " Less",});';
-        echo 'jQuery(".morecontent a").addClass("btn btn-default btn-xs");';
-        echo 'jQuery(".morelink").click(function(){if (jQuery(this).closest( ".rcustomers" ).hasClass( "col-md-10" )){jQuery(this).closest( ".rcustomers" ).removeClass( "col-md-10" )}';
-        echo 'else{jQuery(this).closest( ".rcustomers" ).addClass( "col-md-10" )};});});';
+        echo 'jQuery(".morecontent a").addClass("btn btn-default btn-xs");});';
         echo '</script>';
 
 

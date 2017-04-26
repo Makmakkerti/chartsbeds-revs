@@ -5,8 +5,20 @@ function cbreview_widget_shortcode($atts) {
     ), $atts );
 
     if(empty($cba['limit'])){
-        $cba['limit'] = 4;
+        if(empty(get_option('rec_amt'))) {
+            $cba['limit'] = 4;
+        }else{
+            $cba['limit'] = get_option('rec_amt');
+        }
     }
+
+    echo '<script>';
+    echo 'jQuery(document).ready(function() {';
+    echo 'jQuery(".charts-widg-p").shorten({ "showChars" : 100, "moreText": " See More", "lessText": " Less",});';
+    echo 'jQuery(".cb-rev-clients").shorten({"showChars" : 100, "moreText"	: " See More", "lessText"	: " Less",});';
+    echo 'jQuery(".morecontent a").addClass("btn btn-default btn-xs");';
+     echo '});';
+    echo '</script>';
 
     //Start comments Widget
     echo '<div class="panel panel-default">';
@@ -21,7 +33,7 @@ function cbreview_widget_shortcode($atts) {
                     foreach($data as $q=>$res) {
                         if(is_array($res)){
                             echo '<li class="media">';
-                                echo '<div class="media-left"><img src="'.$res['gravatar'].'" class="img-circle" width="60px"></div>';
+                            if(empty(get_option("gravataroff"))) echo '<div class="media-left"><img src="'.$res['gravatar'].'" class="img-circle" width="60px"></div>';
                                 echo '<div class="media-body">';
                                     echo '<span class="revdate">'.$res['timestamp'].'</span>';
                                     echo '<h4 class="media-heading">';
@@ -39,7 +51,7 @@ function cbreview_widget_shortcode($atts) {
                     }
                 }
 
-                echo '<a href="#" class="btn btn-primary">Go to reviews page</a>';
+                if(!empty(get_option('rev_url')))echo '<a href="'.get_option('rev_url').'" class="btn btn-primary">Go to reviews page</a>';
                 echo '</ul></div></div>';
 
    //End comments Widget

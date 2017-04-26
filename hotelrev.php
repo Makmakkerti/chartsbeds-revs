@@ -21,10 +21,6 @@ include ( $pluginPath . 'chartsbeds-widget-review.php' );
 
 include ( $pluginPath . 'admin_widget_review.php' );
 include ( $pluginPath . 'admin_widget_bar.php' );
-//
-/*echo "<script type='text/javascript' src='http://testpms/wp-content/plugins/chartsbeds-review/scripts/shorten.js'></script>";
-echo "<script type='text/javascript' src='http://testpms/wp-content/plugins/chartsbeds-review/scripts/circles.js'></script>";
-echo "<link rel='stylesheet'  href='http://testpms/wp-content/plugins/chartsbeds-review/styles/style.css' type='text/css' media='all' />";*/
 
 /*ADDING LAST VERSION OF FONT AWSOME*/
 add_action('wp_head', 'add_fawesome_mc');
@@ -32,7 +28,7 @@ function add_fawesome_mc() {
 
     wp_enqueue_style( 'rvmain-css', plugins_url( 'styles/style.css', __FILE__ ) );
     wp_register_style( 'rvmain-css', plugins_url( 'styles/style.css', __FILE__ ) );
-    //wp_enqueue_style( 'cbcss', 'http://testpms/wp-content/plugins/chartsbeds-review/styles/style.css' );
+
     wp_enqueue_script( 'font-awesome', 'https://use.fontawesome.com/4ef6ac5e6d.js' );
     wp_enqueue_script( 'circles', plugins_url( 'scripts/circles.js', __FILE__ ) );
     wp_enqueue_script( 'shorten', plugins_url( 'scripts/shorten.js', __FILE__ ) );

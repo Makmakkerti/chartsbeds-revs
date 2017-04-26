@@ -13,8 +13,8 @@ function review_add_shortcode($cbh) {
     echo 'jQuery(".charts-widg-p").shorten({ "showChars" : 100, "moreText": " See More", "lessText": " Less",});';
     echo 'jQuery(".cb-rev-clients").shorten({"showChars" : 100, "moreText"	: " See More", "lessText"	: " Less",});';
     echo 'jQuery(".morecontent a").addClass("btn btn-default btn-xs");';
+    echo 'jQuery(".morelink").click(function(){if (jQuery(this).closest( ".rcustomers" ).hasClass( "col-md-10" )){jQuery(this).closest( ".rcustomers" ).removeClass( "col-md-10" )}else{jQuery(this).closest( ".rcustomers" ).addClass( "col-md-10" )};});';
     echo '});';
-	echo 'jQuery(".morelink").click(function(){if (jQuery(this).closest( ".rcustomers" ).hasClass( "col-md-10" )){jQuery(this).closest( ".rcustomers" ).removeClass( "col-md-10" )}else{jQuery(this).closest( ".rcustomers" ).addClass( "col-md-10" )};});';
     echo '</script>';
 
 
@@ -23,7 +23,7 @@ function review_add_shortcode($cbh) {
         foreach($data as $q=>$res) {
             if(is_array($res)){
 			$g_rates = $res['guest_rating']*0.58;
-               echo '<div class=\"row tinline\" >';
+               echo '<div class="row tinline" >';
                echo '<div class="col-md-5  rcustomers">';
                echo '<div class="testimonials">';
                echo '<div class="active item">';
@@ -33,7 +33,9 @@ function review_add_shortcode($cbh) {
                echo '<div class="star-ratings-top" style="width:'.$g_rates.'px"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>';
                echo '<div class="star-ratings-bottom"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div></div></div>';
                echo '<div class="carousel-info">';
+
                echo '<img alt="" src="'.$res['gravatar'].'" class="pull-left">';
+
                echo '<div class="pull-left">';
                echo '<span class="testimonials-name">'.$res['name'].'</span>';
                echo '<span class="testimonials-time">'.$res['country'].'</span>';

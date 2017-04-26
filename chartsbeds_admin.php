@@ -6,6 +6,9 @@ if($_POST['charts_hidden'] == 'Y') {
 
          $urlRev = $_POST['rev_url'];
          update_option('rev_url', $urlRev);
+
+        $recAmt = $_POST['rec_amt'];
+        update_option('rec_amt', $recAmt);
 		 
              if(!empty($_POST['gravataroff'])){
                  $gravoff = "checked";
@@ -28,6 +31,7 @@ if($_POST['charts_hidden'] == 'Y') {
 }else{
 	$apiKey = get_option('charts_key');
     $urlRev = get_option('rev_url');
+    $recAmt = get_option('rec_amt');
 }
 
 echo '<div class="wrap">';
@@ -47,6 +51,10 @@ _e("Insert Reviews page url (optional):" );
 echo '<input type="text" name="rev_url" id="rev_url" value="'.$urlRev.'" size="110">';
 echo '</p>';
 
+echo '<p>';
+_e("Recent reviews widget, choose amount to show:" );
+echo '<input type="number" name="rec_amt" id="rec_amt" name="quantity" value="'.$recAmt.'" min="1" max="8">';
+echo '</p>';
 
 echo '<div>';
 echo '<input type="checkbox" id="gravataroff" name="gravataroff" value="checking" '.get_option("gravataroff").'>';

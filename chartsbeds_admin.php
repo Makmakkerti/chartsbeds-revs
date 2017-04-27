@@ -1,16 +1,21 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+//if ( !check_admin_referer('cbeds-update')) exit;
 
-if($_POST['charts_hidden'] == 'Y') {
+if( !current_user_can('edit_others_pages') ) {echo "You have no permission to edit this page"; exit;}  // Exit if user have no permissions to edit site
+
+$submitted_value = $_REQUEST['_wpnonce'];
+
+if($GET['action']= 'update' && wp_verify_nonce($submitted_value, 'cbeds-update')) {
         //Form data sent
-		 $apiKey = $_POST['charts_key'];
+		 $apiKey = esc_html($_POST['charts_key']);
 		 update_option('charts_key', $apiKey);
 
-         $urlRev = $_POST['rev_url'];
+         $urlRev = esc_url_raw(esc_html($_POST['rev_url']));
          update_option('rev_url', $urlRev);
 
-        $recAmt = $_POST['rec_amt'];
+        $recAmt = intval($_POST['rec_amt']);
         update_option('rec_amt', $recAmt);
 		 
              if(!empty($_POST['gravataroff'])){
@@ -39,8 +44,9 @@ if($_POST['charts_hidden'] == 'Y') {
 
 echo '<div class="wrap">';
 echo "<h2>" . __( 'ChartsBeds Options', 'charts_updates' ) . "</h2>";
-echo '<form name="charts_form" method="post" action="'.str_replace( '%7E', '~', $_SERVER['REQUEST_URI']).'">';
-echo '<input type="hidden" name="charts_hidden" value="Y">';
+echo '<form name="charts_form" method="post" action="'.str_replace( '%7E', '~', $_SERVER['REQUEST_URI']).'&action=update">';
+/*echo '<input type="hidden" name="charts_hidden" value="Y">';*/
+
 echo "<h4>" . __( 'Chartsbeds API KEY', 'charts_updates' ) . "</h4>";
 echo '<p>';
 _e("Insert API KEY: " );
@@ -63,10 +69,13 @@ echo '<div>';
 echo '<input type="checkbox" id="gravataroff" name="gravataroff" value="checking" '.get_option("gravataroff").'>';
 echo '<label for="gravataroff">Check to disable gravatars for reviews widget</label></div>';
 echo '<div><input type="checkbox" id="answersoff" name="answersoff" value="answersoff" '.get_option("answersoff").'';
+
 echo '<label for="answersoff">Check to disable hotel\'s answer for reviews</label></div>';
 echo '<p class="submit"><input type="submit" name="Save" value="';
 _e('Update Options', 'charts_updates' );
-echo '" /></p></form></div>';
+echo '" /></p>';
+wp_nonce_field('cbeds-update');
+echo '</form></div>';
 
-echo '<a href="http://www.chartsbeds.com/" target="_blank"><img src="http://softdigitalsolution.com/wp-content/uploads/chartsbeds-web-logo.png" width="150px"><a/>';
-echo '<a href="http://dashboard.chartspms.com/" target="_blank"><img src="http://softdigitalsolution.com/wp-content/uploads/review-logo.png" width="200px"><a/>';
+echo '<a href="http://www.chartsbeds.com/" target="_blank"><img src="'.plugins_url().'/chartsbeds-review/img/chartsbeds-web-logo.png" width="150px"><a/>';
+echo '<a href="http://dashboard.chartspms.com/" target="_blank"><img src="'.plugins_url().'/chartsbeds-review/img/review-logo.png" width="200px"><a/>';

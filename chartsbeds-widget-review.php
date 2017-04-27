@@ -40,13 +40,13 @@ function cbeds_review_widget_shortcode($atts) {
                                 echo '<div class="media-body">';
                                     echo '<span class="revdate">'.$res['timestamp'].'</span>';
                                     echo '<h4 class="media-heading">';
-                                    echo '<small><b>'.ucfirst($res['name']).'</b> <br />from '.$res['country'].'</small><br><small><span class="fa fa-thumbs-up" style="color:#337ab7"></span>';
+                                    echo '<small><b>'.ucfirst($res['name']).'</b> <br />from '.$res['country'].'</small><br><small><span class="fa fa-thumbs-up" style="color:#337ab7"></span>&nbsp;';
                                     echo $res['guest_rating'].'% Satisfied <br></small>';
                                     echo '</h4>';
                                     echo '<p class="charts-widg-p">';
                                     echo $res['review'];
                                     echo '</p>';
-                                    echo '<p class="charts-widg" ><small><span class="fa fa-heart" style="color:red"></span>';
+                                    echo '<p class="charts-widg" ><small><span class="fa fa-heart" style="color:red">&nbsp;</span>';
                                     echo ucfirst($res['name']);
                                     echo ' recommends this hotel</small></p>';
                                 echo '</div></li><hr>';

@@ -43,7 +43,7 @@ function cbeds_review_add_shortcode($cbh) {
                echo '<span class="testimonials-name">'.$res['name'].'</span>';
                echo '<span class="testimonials-time">'.$res['country'].'</span>';
                echo '<span class="testimonials-post">'.$res['timestamp'].'</span>';
-               echo '<span class="testimonials-post"><i class="fa fa-heart recommends" aria-hidden="true"></i> '.$res['name'].' recommends this hotel</span></div></div>';
+               echo '<span class="testimonials-post"><i class="fa fa-heart recommends" aria-hidden="true"></i> '.$res['name'].'&nbsp; recommends this hotel</span></div></div>';
 
                if(isset($res['answer'])&&!empty($res['answer'])&& empty(get_option("answersoff"))){
                   echo "<p><i class='fa fa-comments revanswer' aria-hidden='true'></i>".$obj['property']." answered: ".$res['answer']."</p>";

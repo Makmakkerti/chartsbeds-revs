@@ -1,5 +1,8 @@
 <?php
-function widget_bar_creation(){
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+function cbeds_widget_bar_creation(){
 
     $json = file_get_contents('http://dashboard.chartspms.com/REVIEWS.json.php?apiKey='.get_option("charts_key").'');
     $obj = json_decode($json, true);
@@ -37,4 +40,4 @@ function widget_bar_creation(){
         $pl++; }
     }
 
-add_shortcode('chartsbeds-review-bar', 'widget_bar_creation');
+add_shortcode('chartsbeds-review-bar', 'cbeds_widget_bar_creation');

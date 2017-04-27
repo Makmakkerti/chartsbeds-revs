@@ -1,13 +1,16 @@
 <?php
-add_action( 'widgets_init', 'cbbar_widget' );
 
-function cbbar_widget() {
-    register_widget( 'CBbar_Widget' );
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+add_action( 'widgets_init', 'cbeds_bar_widget' );
+
+function cbeds_bar_widget() {
+    register_widget( 'CB_bar_Widget' );
 }
 
-class CBbar_Widget extends WP_Widget {
+class CB_bar_Widget extends WP_Widget {
 
-    function CBbar_Widget() {
+    function CB_bar_Widget() {
         $widget_ops = array( 'classname' => 'wreviews', 'description' => __('A widget that displays hotels review', 'wreviews') );
 
         $control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'wreviews-widget' );

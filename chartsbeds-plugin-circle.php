@@ -1,5 +1,8 @@
 <?php
-function rev_creation(){
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+function cbeds_circles_func(){
 
     $json = file_get_contents('http://dashboard.chartspms.com/REVIEWS.json.php?apiKey='.get_option("charts_key").'');
     $obj = json_decode($json, true);
@@ -42,8 +45,8 @@ function rev_creation(){
 
     echo "circles.push(circle); \n";
     echo "window.onresize = function(e) {for (var i = 0; i < circles.length; i++) {circles[i].updateRadius(getWidth());}}; \n";
-    echo "function getWidth() {return window.innerWidth /25;} \n";
+    echo "function getWidth() {return window.innerWidth /28;} \n";
     echo "</script>";
 }
 
-add_shortcode('chartsbeds-review-circle', 'rev_creation');
+add_shortcode('chartsbeds-review-circle', 'cbeds_circles_func');

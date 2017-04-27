@@ -1,5 +1,8 @@
 <?php
-function cbreview_widget_shortcode($atts) {
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+function cbeds_review_widget_shortcode($atts) {
     $cba = shortcode_atts( array(
         'limit' => esc_attr($cba['limit']),
     ), $atts );
@@ -57,4 +60,4 @@ function cbreview_widget_shortcode($atts) {
    //End comments Widget
 }
 
-add_shortcode('chartsbeds-review-recent', 'cbreview_widget_shortcode');
+add_shortcode('chartsbeds-review-recent', 'cbeds_review_widget_shortcode');

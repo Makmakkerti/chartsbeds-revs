@@ -1,6 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 /// Function ADD Reviews to the page
-function review_add_shortcode($cbh) {
+function cbeds_review_add_shortcode($cbh) {
     $cbh = shortcode_atts( array(
         'limit' => esc_attr($cbh['limit']),
     ), $atts );
@@ -17,14 +20,14 @@ function review_add_shortcode($cbh) {
     echo '});';
     echo '</script>';
 
-
+    echo '<div class="row tinliner" >';
     foreach ($obj as $title => $data){
         $counter = 1;
         foreach($data as $q=>$res) {
             if(is_array($res)){
 			$g_rates = $res['guest_rating']*0.58;
-               echo '<div class="row tinline" >';
-               echo '<div class="col-md-5  rcustomers">';
+
+               echo '<div class="col-md-6  rcustomers">';
                echo '<div class="testimonials">';
                echo '<div class="active item">';
                echo '<blockquote><p class="cb-rev-clients">'.$res['review'].'</p></blockquote>';
@@ -46,11 +49,12 @@ function review_add_shortcode($cbh) {
                   echo "<p><i class='fa fa-comments revanswer' aria-hidden='true'></i>".$obj['property']." answered: ".$res['answer']."</p>";
                }
 
-               echo "</div> \n </div> \n </div> \n </div>";
+               echo "</div> \n </div> \n </div> \n ";
             $counter++;
             }
         }
     }
+    echo "</div>";
 }
 
-add_shortcode('chartsbeds-review-page', 'review_add_shortcode');
+add_shortcode('chartsbeds-review-page', 'cbeds_review_add_shortcode');

@@ -1,25 +1,17 @@
 <?php
-add_action( 'widgets_init', 'cbreviews_widget' );
 
-/*Adding settings page to Admin Panel*/
-function charts_admin() {
-    include('chartsbeds_admin.php');
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+add_action( 'widgets_init', 'cbeds_reviews_widget' );
+
+
+function cbeds_reviews_widget() {
+    register_widget( 'CB_reviews_Widget' );
 }
 
-function charts_admin_actions() {
-    add_menu_page("Chartsbeds", "Chartsbeds", 1, "Chartsbeds", "charts_admin", plugins_url()."/chartsbeds-review/chartsbeds_ico.png", 7);
-    //Description of recieved data:( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
-}
+class CB_reviews_Widget extends WP_Widget {
 
-add_action('admin_menu', 'charts_admin_actions');
-
-function cbreviews_widget() {
-    register_widget( 'CBreviews_Widget' );
-}
-
-class CBreviews_Widget extends WP_Widget {
-
-    function CBreviews_Widget() {
+    function CB_reviews_Widget() {
         $widget_ops = array( 'classname' => 'reviews', 'description' => __('A widget that displays hotels review', 'reviews') );
 
         $control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'reviews-widget' );

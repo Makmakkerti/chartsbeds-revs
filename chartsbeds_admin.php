@@ -1,4 +1,7 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 if($_POST['charts_hidden'] == 'Y') {
         //Form data sent
 		 $apiKey = $_POST['charts_key'];
@@ -64,3 +67,6 @@ echo '<label for="answersoff">Check to disable hotel\'s answer for reviews</labe
 echo '<p class="submit"><input type="submit" name="Save" value="';
 _e('Update Options', 'charts_updates' );
 echo '" /></p></form></div>';
+
+echo '<a href="http://www.chartsbeds.com/" target="_blank"><img src="http://softdigitalsolution.com/wp-content/uploads/chartsbeds-web-logo.png" width="150px"><a/>';
+echo '<a href="http://dashboard.chartspms.com/" target="_blank"><img src="http://softdigitalsolution.com/wp-content/uploads/review-logo.png" width="200px"><a/>';

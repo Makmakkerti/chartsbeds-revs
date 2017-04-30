@@ -25,6 +25,9 @@ function cbeds_review_widget_shortcode($atts) {
 
     //Start comments Widget
     echo '<div class="panel panel-default">';
+    if(!empty(get_option("thanks_on"))) {
+        echo '<div class="cb-thanks"><a href="http://www.chartsbeds.com/" target="_blank"><img src="' . plugins_url() . '/chartsbeds-review/img/chartsbeds-web-logo.png" width="100px" /></a></div>';
+    }
         echo '<div class="panel-body">';
             echo '<ul class="media-list">';
 

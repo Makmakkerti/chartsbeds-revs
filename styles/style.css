@@ -254,5 +254,7 @@
     font-size: 12px;
     font-family: Arial;
 }
-
+.cb-thanks{
+	text-align: right;
+}
 /**REVIEW WIDGET END*/

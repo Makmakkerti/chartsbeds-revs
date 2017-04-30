@@ -21,6 +21,11 @@ function cbeds_review_add_shortcode($cbh) {
     echo '</script>';
 
     echo '<div class="row tinliner" >';
+
+    if(!empty(get_option("thanks_on"))) {
+        echo '<div class="cb-thanks"><a href="http://www.chartsbeds.com/" target="_blank"><img src="' . plugins_url() . '/chartsbeds-review/img/chartsbeds-web-logo.png" width="100px" /></a></div>';
+    }
+
     foreach ($obj as $title => $data){
         $counter = 1;
         foreach($data as $q=>$res) {

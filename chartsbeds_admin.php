@@ -1,7 +1,6 @@
 <?php
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
 if( !current_user_can('edit_others_pages') ) {echo "You have no permission to edit this page"; exit;}  // Exit if user have no permissions to edit site
 
 $submitted_value = $_REQUEST['_wpnonce'];
@@ -24,13 +23,20 @@ if($GET['action']= 'update' && wp_verify_nonce($submitted_value, 'cbeds-update')
              }
              update_option('gravataroff', $gravoff);
 
-             if(!empty($_POST['answersoff'])){
-                 $gravoff = "checked";
+             if(!empty($_POST['answers_off'])){
+                 $answeroff = "checked";
              }else{
-                 $gravoff = "";
+                 $answeroff = "";
              }
-             update_option('answersoff', $gravoff);
-		 
+             update_option('answers_off', $answeroff);
+
+            if(!empty($_POST['thanks_on'])){
+                $thanks_on = "checked";
+            }else{
+                $thanks_on = "";
+            }
+            update_option('thanks_on', $thanks_on);
+
              echo '<div class="updated"><p><strong>';
              _e('Options saved.' );
              echo '</strong></p></div>';
@@ -67,14 +73,20 @@ echo '</p>';
 echo '<div>';
 echo '<input type="checkbox" id="gravataroff" name="gravataroff" value="checking" '.get_option("gravataroff").'>';
 echo '<label for="gravataroff">Check to disable gravatars for reviews widget</label></div>';
-echo '<div><input type="checkbox" id="answersoff" name="answersoff" value="answersoff" '.get_option("answersoff").'';
 
-echo '<label for="answersoff">Check to disable hotel\'s answer for reviews</label></div>';
+echo '<div>';
+echo '<input type="checkbox" id="answers_off" name="answers_off" value="check" '.get_option("answers_off").'>';
+echo '<label for="answers_off">Check to disable hotel\'s answer for reviews</label></div>';
+
+echo '<div>';
+echo '<input type="checkbox" id="thanks_on" name="thanks_on" value="check" '.get_option("thanks_on").'>';
+echo '<label for="thanks_on">Check to enable Chartsbeds link in reviews</label></div>';
+
 echo '<p class="submit"><input type="submit" name="Save" value="';
 _e('Update Options', 'charts_updates' );
 echo '" /></p>';
 wp_nonce_field('cbeds-update');
 echo '</form></div>';
 
-echo '<a href="http://www.chartsbeds.com/" target="_blank"><img src="'.plugins_url().'/chartsbeds-review/img/chartsbeds-web-logo.png" width="150px"><a/>';
-echo '<a href="http://dashboard.chartspms.com/" target="_blank"><img src="'.plugins_url().'/chartsbeds-review/img/review-logo.png" width="200px"><a/>';
+echo '<a href="http://www.chartsbeds.com/" target="_blank"><img src="'.plugins_url().'/chartsbeds-review/img/chartsbeds-web-logo.png" width="150px"></a>';
+echo '<a href="http://dashboard.chartspms.com/" target="_blank"><img src="'.plugins_url().'/chartsbeds-review/img/review-logo.png" width="200px"></a>';

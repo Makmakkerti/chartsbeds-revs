@@ -39,7 +39,7 @@ function charts_admin() {
 }
 
 function charts_admin_actions() {
-    add_menu_page("Chartsbeds", "Chartsbeds", 1, "Chartsbeds", "charts_admin", plugins_url()."/chartsbeds-review/chartsbeds_ico.png", 7);
+    add_menu_page("Chartsbeds", "Chartsbeds", 1, "Chartsbeds", "charts_admin", plugins_url()."/chartsbeds/chartsbeds_ico.png", 7);
     //Description of recieved data:( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
 }
 

@@ -88,5 +88,5 @@ echo '" /></p>';
 wp_nonce_field('cbeds-update');
 echo '</form></div>';
 
-echo '<a href="http://www.chartsbeds.com/" target="_blank"><img src="'.plugins_url().'/chartsbeds-review/img/chartsbeds-web-logo.png" width="150px"></a>';
-echo '<a href="http://dashboard.chartspms.com/" target="_blank"><img src="'.plugins_url().'/chartsbeds-review/img/review-logo.png" width="200px"></a>';
+echo '<a href="http://www.chartsbeds.com/" target="_blank"><img src="'.plugins_url().'/chartsbeds/img/chartsbeds-web-logo.png" width="150px"></a>';
+echo '<a href="http://dashboard.chartspms.com/" target="_blank"><img src="'.plugins_url().'/chartsbeds/img/review-logo.png" width="200px"></a>';
